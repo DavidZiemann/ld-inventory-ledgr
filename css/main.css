@@ -13,7 +13,7 @@
   --color-foreground: #f5f5f5; /* Text color on dark backgrounds */
   --color-foreground-alt: #eaeaea; /* Subtle alternate text color */
   --color-border: #334756; /* Borders, subtle line color */
-  --color-accent: #ff4c29; /* Bright accent (buttons, links) */
+  --color-accent: #0172ad; /* Bright accent (buttons, links) */
   --color-shadow: rgba(0, 0, 0, 0.5);
 }
 
