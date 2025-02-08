@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "description": "Demo Asset Management Application",
   "scripts": {
-    "start": "live-server --open=./index.html"
+    "start": "serve ."
   },
   "devDependencies": {
-    "live-server": "^1.2.0",
-    "sass": "^1.84.0"
+    "sass": "^1.84.0",
+    "serve": "^14.2.4"
   },
   "dependencies": {
     "@picocss/pico": "^2.0.6"
