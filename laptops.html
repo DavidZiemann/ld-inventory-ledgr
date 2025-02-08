@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ledgr Laptop Inventory</title>
+    <link rel="stylesheet" href="./css/pico.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="container-fluid top-nav">
+      <nav class="container">
+        <h1>Ledgr Laptop Inventory</h1>
+        <ul>
+          <li>
+            <a href="laptops.html" class="contrast" aria-current="page"
+              >Laptops</a
+            >
+          </li>
+          <li>
+            <a href="laptop-details.html" class="contrast">Add New Laptop</a>
+          </li>
+          <li>
+            <a href="index.html" class="contrast">&larr; Back to Home</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <article>
+        <form id="searchForm" role="search">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search laptops by name..."
+          />
+          <button type="submit">Search</button>
+        </form>
+      </article>
+
+      <article>
+        <table role="grid" id="laptopTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Assigned To</th>
+              <th>Date Purchased</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows populated by laptops.js -->
+          </tbody>
+        </table>
+      </article>
+    </main>
+
+    <footer class="container-fluid">
+      <small>&copy; 2025 Ledgr - Demo</small>
+    </footer>
+
+    <script src="./js/laptops.js"></script>
+  </body>
+</html>

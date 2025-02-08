@@ -1,0 +1,13 @@
+/* Simple custom styles complementing Pico CSS */
+
+.container {
+    margin: 2rem auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  /* Example: change button color */
+  button {
+    background-color: #0366d6;
+  }
+  

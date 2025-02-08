@@ -1,0 +1,15 @@
+{
+  "name": "ledgr-demo",
+  "version": "0.1.0",
+  "description": "Demo Asset Management Application",
+  "scripts": {
+    "start": "live-server --open=./index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "sass": "^1.84.0"
+  },
+  "dependencies": {
+    "@picocss/pico": "^2.0.6"
+  }
+}

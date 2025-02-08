@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# OS-specific files (e.g., macOS)
+.DS_Store
+Thumbs.db
+
+# Build/Distribution directories (if you decide to use a bundler or minifier)
+dist/
+build/
+
+# Optional: If you ever use coverage tools like Jest or Istanbul
+coverage/
+
+# Optional: If using environment variables in a .env file
+.env
+.env.local
+.env.*.local

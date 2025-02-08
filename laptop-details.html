@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Laptop Details</title>
+    <link rel="stylesheet" href="./css/pico.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="container-fluid top-nav">
+      <nav class="container">
+        <h1>Ledgr Laptop Inventory</h1>
+        <ul>
+          <li><a href="laptops.html" class="contrast">Laptops</a></li>
+          <li>
+            <a href="laptop-details.html" class="contrast" aria-current="page"
+              >Add New Laptop</a
+            >
+          </li>
+          <li>
+            <a href="index.html" class="contrast">&larr; Back to Home</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <article>
+        <h3>Add or Edit Laptop</h3>
+
+        <form>
+          <label for="laptopName">Laptop Name</label>
+          <input type="text" id="laptopName" name="laptopName" required />
+
+          <label for="brand">Brand</label>
+          <select id="brand" name="brand">
+            <option value="Lenovo">Lenovo</option>
+            <option value="Dell">Dell</option>
+            <option value="Apple">Apple</option>
+          </select>
+
+          <label for="assignedTo">Assigned To</label>
+          <input type="text" id="assignedTo" name="assignedTo" required />
+
+          <label for="datePurchased">Date Purchased</label>
+          <input type="date" id="datePurchased" name="datePurchased" />
+
+          <button type="submit">Save</button>
+        </form>
+      </article>
+    </main>
+
+    <footer class="container-fluid">
+      <small>&copy; 2025 Ledgr - Demo</small>
+    </footer>
+  </body>
+</html>
