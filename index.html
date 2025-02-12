@@ -2,7 +2,12 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+
     <title>Ledgr Demo</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
     <link rel="stylesheet" href="./css/pico.min.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
@@ -34,10 +39,38 @@
         </p>
         <a href="ledgr-vs-competitor.html" role="button">See Comparison</a>
       </article>
+
+      <article>
+        <h2>Feature Triggers</h2>
+
+        <form>
+          <label for="lifecycleFlag">Lifecycle Flag</label>
+          <input
+            id="lifecycleFlag"
+            type="checkbox"
+            role="switch"
+            class="flag-switch"
+            data-flag="release-laptop-life-remaining"
+          />
+        </form>
+
+        <a
+          href="https://app.launchdarkly.com/webhook/triggers/67ac341ab113ef09b098d754/2d709100-44df-4a91-b5f2-bb360e24e2a5"
+          >Turn Flag OFF</a
+        >
+
+        <br />
+        <a
+          href="https://app.launchdarkly.com/webhook/triggers/67acbaf26da26109d948db71/ad30421c-9f61-452b-8929-381775845e4b"
+          >Turn Flag On</a
+        >
+      </article>
     </main>
 
     <footer class="container-fluid">
-      <small>&copy; 2025 Ledgr - Demo</small>
+      <p>&copy; 2025 Ledgr - Demo</p>
     </footer>
+
+    <script type="module" src="./js/toggles.js"></script>
   </body>
 </html>
