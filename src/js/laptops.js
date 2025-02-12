@@ -183,13 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const tableHead = document.querySelector("#laptopTable thead tr");
       // Make sure we don't duplicate the column if it already exists
       if (FLAG_LAPTOP_LIFE) {
-          // Find the 5th <th> (Actions). Insert before it, if we haven't already
-          const allThs = theadRow.querySelectorAll("th");
-          const actionsTh = allThs[4]; // 0:Name,1:Brand,2:Assigned To,3:Date,4:Actions
-          const statusHeader = document.createElement("th");
-          statusHeader.id = "lifecycleTh";
-          statusHeader.textContent = "Status";
-          theadRow.insertBefore(statusHeader, actionsTh);
+        // Find the 5th <th> (Actions). Insert before it, if we haven't already
+        const allThs = theadRow.querySelectorAll("th");
+        const actionsTh = allThs[4]; // 0:Name,1:Brand,2:Assigned To,3:Date,4:Actions
+        const statusHeader = document.createElement("th");
+        statusHeader.id = "lifecycleTh";
+        statusHeader.textContent = "Status";
+        theadRow.insertBefore(statusHeader, actionsTh);
       } else if (document.getElementById("lifecycleTh")) {
         // If toggled of, make sure to remove the header.
         document.getElementById("lifecycleTh").remove();
