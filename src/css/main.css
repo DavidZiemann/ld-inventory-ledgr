@@ -205,20 +205,23 @@ footer {
 }
 
 /* Alerts */
+#alert-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .alert {
-  margin-bottom: var(--spacing);
-  padding: var(--form-element-spacing-vertical)
-    var(--form-element-spacing-horizontal);
-  border-radius: var(--border-radius);
+  max-width: 600px;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: var(--pico-border-radius);
   color: var(--color);
   background-color: var(--background-color);
   border: 1px solid var(--background-color);
   background-image: var(--icon);
   background-position: center left var(--form-element-spacing-vertical);
   background-size: calc(var(--font-size) * 1.5) auto;
-  padding-left: calc(
-    var(--form-element-spacing-vertical) * 2 + calc(var(--font-size) * 1.5)
-  );
 }
 
 .alert-danger {
