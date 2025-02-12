@@ -2,14 +2,18 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+
     <title>Ledgr Laptop Inventory</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./css/pico.min.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <header class="container-fluid top-nav">
       <nav class="container">
-        <h1>Ledgr Laptop Inventory</h1>
+        <h1>Ledgr</h1>
         <ul>
           <li>
             <a href="laptops.html" class="contrast" aria-current="page"
@@ -17,10 +21,10 @@
             >
           </li>
           <li>
-            <a href="laptop-details.html" class="contrast">Add New Laptop</a>
+            <a href="laptop-details.html" class="contrast">Add New</a>
           </li>
           <li>
-            <a href="index.html" class="contrast">&larr; Back to Home</a>
+            <a href="index.html" class="contrast">Home</a>
           </li>
         </ul>
       </nav>
@@ -38,7 +42,7 @@
         </form>
       </article>
 
-      <article>
+      <article class="overflow-auto">
         <table role="grid" id="laptopTable">
           <thead>
             <tr>
@@ -60,6 +64,7 @@
       <small>&copy; 2025 Ledgr - Demo</small>
     </footer>
 
-    <script src="./js/laptops.js"></script>
+    <script type="module" src="./js/ldClient.js"></script>
+    <script type="module" src="./js/laptops.js"></script>
   </body>
 </html>

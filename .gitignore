@@ -14,10 +14,10 @@ Thumbs.db
 dist/
 build/
 
-# Optional: If you ever use coverage tools like Jest or Istanbul
-coverage/
-
-# Optional: If using environment variables in a .env file
+# Block .env files
 .env
-.env.local
-.env.*.local
+.env.*
+
+# Parcel files
+.parcel-cache
+dist

@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "description": "Demo Asset Management Application",
   "scripts": {
-    "start": "serve ."
+    "start": "parcel serve index.html --port 3000 --https",
+    "build": "parcel build index.html"
   },
   "devDependencies": {
-    "sass": "^1.84.0",
-    "serve": "^14.2.4"
+    "parcel": "^2.13.3",
+    "sass": "^1.84.0"
   },
   "dependencies": {
     "@picocss/pico": "^2.0.6"
