@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Explore Ledgr Demo Scenarios: Asset Management and Feature Comparisons."
+    />
+    <meta property="og:title" content="Ledgr Demo Portal" />
+    <meta
+      property="og:description"
+      content="Try out Ledgr’s innovative product scenarios."
+    />
 
     <title>Ledgr Demo</title>
 
@@ -14,15 +23,12 @@
   <body>
     <header class="container">
       <nav>
-        <strong>Ledgr Demos</strong>
+        <strong>Ledgr Demos - David Ziemann</strong>
       </nav>
     </header>
 
     <main class="container">
-      <h1>Welcome to the Ledgr Demo Portal</h1>
-      <p>Select a scenario below to explore our product concepts.</p>
-
-      <article style="margin-top: 2rem">
+      <article class="spaced-section">
         <h2>Scenario 1: Asset Management Tool</h2>
         <p>
           Manage laptops and other company assets using our simplified “Ledgr
@@ -31,7 +37,7 @@
         <a href="laptops.html" role="button" class="contrast">Go to Laptops</a>
       </article>
 
-      <article style="margin-top: 2rem">
+      <article class="spaced-section">
         <h2>Scenario 2: Landing Page Comparison</h2>
         <p>
           Explore a marketing-style landing page that compares Ledgr’s features
@@ -40,19 +46,27 @@
         <a href="ledgr-vs-competitor.html" role="button">See Comparison</a>
       </article>
 
-      <article>
+      <article class="spaced-section">
         <h2>Feature Triggers</h2>
+        <p>
+          Toggle feature flags to dynamically enable or disable experimental
+          features.
+        </p>
 
-        <form>
+        <form id="toggle-container">
           <fieldset>
-            <label>
+            <legend>Feature Toggles</legend>
+            <label for="lifecycleFlag">
               <input
-            id="lifecycleFlag"
-            type="checkbox"
-            role="switch"
-            class="flag-switch"
-            data-flag="release-laptop-life-remaining"
-          />Laptop Lifecycle Column</label>
+                id="lifecycleFlag"
+                type="checkbox"
+                role="switch"
+                class="flag-switch"
+                data-flag="release-laptop-life-remaining"
+              />
+              Laptop Lifecycle Column
+            </label>
+          </fieldset>
         </form>
       </article>
     </main>
@@ -61,7 +75,8 @@
       <p>&copy; 2025 Ledgr - Demo</p>
     </footer>
 
-    <div id="alert-container"></div>
+    <!-- Alert container for real-time messages -->
+    <div id="alert-container" aria-live="polite"></div>
 
     <script type="module" src="./js/toggles.js"></script>
   </body>
