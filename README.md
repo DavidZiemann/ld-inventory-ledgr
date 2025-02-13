@@ -3,7 +3,9 @@
 This simple demo application showcases the functionality available in LaunchDarkly through 2 scenarios:
 
 <details>
-<summary>#### **Scenario 1 – Asset Management Tool** (`http://localhost:3000/laptops.html`)</summary>
+<summary>Scenario 1 – Asset Management Tool</summary>
+
+`http://localhost:3000/laptops.html`
 
 A SaaS solution for managing laptops within an organization. The flag `release-laptop-life-remaining` is setup to add a column to the table. Additionally, a listener has been added to automatically update the page if a flag changes either from the LaunchDarkly GUI or triggers.
 
@@ -16,7 +18,9 @@ Relevant files:
 - [/server/server.js](/server/server.js) - Express server to send triggers to LD & return back success/failure
 </details>
 <details>
-<summary>#### **Scenario 2 – Marketing Landing Page** (`http://localhost:3000/ledgr-vs-assetwise.html`)</summary>
+<summary>Scenario 2 – Marketing Landing Page</summary>
+
+`http://localhost:3000/ledgr-vs-assetwise.html`
 
 A modern SaaS-style comparison between Ledgr and a fictional competitor **AssetWise**.
 
@@ -30,11 +34,13 @@ Relevant files:
 - [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
 </details>
 <details>
-<summary>#### **Helper Page** (`http://localhost:3000`)</summary>
+<summary>Helper Page</summary>
+
+`http://localhost:3000`
 
 This is an entry point for accessing the different parts of the demo as well as toggles for feature flags. I recommend starting here.
-</details>
----
+
+## </details>
 
 ## 🚀 Table of Contents
 
