@@ -3,6 +3,22 @@ import * as LDClient from "./ldclient.min.js";
 let ldClientInstance = null;
 
 /**
+ * Generates a stable, randomized user key per session.
+ * Uses localStorage to persist across page refreshes.
+ */
+function generateUserKey() {
+  if (typeof window !== "undefined") {
+    let userKey = localStorage.getItem("ld-user-key");
+    if (!userKey) {
+      userKey = `user-${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem("ld-user-key", userKey);
+    }
+    return userKey;
+  }
+  return `user-${Math.random().toString(36).substr(2, 9)}`;
+}
+
+/**
  * Initializes LaunchDarkly with user location context.
  * @param {string} location - User location (e.g., "Europe", "California").
  */
@@ -21,9 +37,11 @@ export function getLDClient(location = "default") {
     return null;
   }
 
+  const userKey = generateUserKey();
+
   const context = {
     kind: "user",
-    key: `user-${location}`,
+    key: userKey,
     location: location,
   };
 
@@ -43,7 +61,7 @@ export function getLDClient(location = "default") {
  * @param {string} newLocation - New selected region.
  */
 export function updateLDContext(newLocation) {
-  console.log('updateLDContext: ' + newLocation);
+  console.log("updateLDContext: " + newLocation);
   if (!ldClientInstance) {
     console.warn("⚠️ LaunchDarkly has not been initialized yet.");
     return;
