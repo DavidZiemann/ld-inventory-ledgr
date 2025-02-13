@@ -100,7 +100,7 @@ Follow the instructions below based on your OS.
 
 ### **Windows Instructions**
 
-> [!NOTE]  
+> [!NOTE]
 > I do not have a Windows machine. These steps have not been varified.
 
 1. **Install Node.js**
@@ -223,9 +223,10 @@ ledgr-demo/
 
 ## 🚀 Feature Flag Setup
 
-**This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.**
+> [!NOTE]
+> This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.
 
-### **release-laptop-life-remaining**
+#### **release-laptop-life-remaining**
 
 **Type:** boolean
 
@@ -235,7 +236,7 @@ ledgr-demo/
 
 ---
 
-### **release-marketing-security-report**
+#### **release-marketing-security-report**
 
 **Type:** boolean
 
@@ -245,7 +246,7 @@ ledgr-demo/
 
 ---
 
-### **show-region-based-security-report**
+#### **show-region-based-security-report**
 
 **Type:** multivariate
 
