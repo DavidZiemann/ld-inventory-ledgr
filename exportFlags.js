@@ -5,7 +5,7 @@ const fs = require("fs");
 const LAUNCHDARKLY_API_KEY = process.env.LD_API_KEY;
 const PROJECT_KEY = process.env.LD_PROJECT_KEY;
 const README_FILE = "README.md";
-const FLAG_SECTION_MARKER = "## 🚀 Feature Flags Overview"; // Look for this in README
+const FLAG_SECTION_MARKER = "## 🚀 Feature Flag Setup"; // Look for this in README
 
 if (!LAUNCHDARKLY_API_KEY || !PROJECT_KEY) {
   console.error("❌ Missing API key or project key in .env file");

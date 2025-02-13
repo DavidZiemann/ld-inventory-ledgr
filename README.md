@@ -1,21 +1,35 @@
 # Ledgr Demo App
 
-A demo application showcasing two scenarios:
+This simple demo application showcases the functionality available in LaunchDarkly through 2 scenarios:
 
-1. **Scenario 1 – Asset Management Tool** (`laptops.html`)
+#### **Scenario 1 – Asset Management Tool** (`http://localhost:3000/laptops.html`)
 
-   - Manage laptops in an inventory system.
-   - Feature flag support for **laptop lifecycle tracking** (via LaunchDarkly).
+A SaaS solution for managing laptops within an organization. The flag `release-laptop-life-remaining` is setup to add a column to the table. Additionally, a listener has been added to automatically update the page if a flag changes either from the LaunchDarkly GUI or triggers.
 
-2. **Scenario 2 – Marketing Page** (`ledgr-vs-assetwise.html`)
+Relevant files:
 
-   - A modern SaaS-style comparison between Ledgr and a fictional competitor **AssetWise**.
+- [/src/js/laptops.js](src/js/laptops.js) - Loads content & sets up feature flag
+- [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
+- [/src/js/toggles.js](/src/js/toggles.js) - Code for triggering API call to trigger flag change
+- [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
+- [/server/server.js](/server/server.js) - Express server to send triggers to LD & return back success/failure
 
-This project uses:
+#### **Scenario 2 – Marketing Landing Page** (`http://localhost:3000/ledgr-vs-assetwise.html`)
 
-- [**Parcel**](https://parceljs.org/) for fast local development.
-- [**Pico CSS**](https://picocss.com/) for styling.
-- **LaunchDarkly SDK** for feature flagging (optional).
+A modern SaaS-style comparison between Ledgr and a fictional competitor **AssetWise**.
+
+There are two flags used within this page. The first is `release-marketing-security-report` which is a boolean flag to determine if the security report section should appear.
+
+The second flag is `show-region-based-security-report` and is a multivariate flag that determines which security content is displayed based on the user context (location). This flag has a prerequesite that the `release-marketing-security-report` flag is available.
+
+Relevant files:
+
+- [/src/js/securityMarketing.js](/src/js/securityMarketing.js) - Usage of feature flags for the landing page
+- [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
+
+#### **Helper Page** (`http://localhost:3000`)
+
+This is an entry point for accessing the different parts of the demo as well as toggles for feature flags. I recommend starting here.
 
 ---
 
@@ -27,8 +41,8 @@ This project uses:
    - [Windows Instructions](#windows-instructions)
 3. [Running the Application Locally](#running-the-application-locally)
 4. [LaunchDarkly Setup](#launchdarkly-setup)
-5. [Feature Flag Setup](#feature-flag-setup)
-6. [Project Structure](#project-structure)
+5. [Project Structure](#project-structure)
+6. [Feature Flag Setup](#feature-flag-setup)
 
 ---
 
@@ -40,6 +54,12 @@ This project uses:
 ---
 
 ## 📥 Installation
+
+This project uses:
+
+- [**Parcel**](https://parceljs.org/) for fast local development.
+- [**Pico CSS**](https://picocss.com/) for styling.
+- [**LaunchDarkly**](https://launchdarkly.com) for feature flagging.
 
 Follow the instructions below based on your OS.
 
@@ -79,6 +99,9 @@ Follow the instructions below based on your OS.
 ---
 
 ### **Windows Instructions**
+
+> [!NOTE]  
+> I do not have a Windows machine. These steps have not been varified.
 
 1. **Install Node.js**
 
@@ -135,12 +158,6 @@ This app integrates **LaunchDarkly** for **dynamic feature flag toggles**.
 
 - Sign up at [LaunchDarkly](https://launchdarkly.com/)
 - Create a new **Client-Side SDK Key**.
-- Create a **feature flag** called:
-  ```plaintext
-  release-laptop-life-remaining
-  ```
-  - **True:** Enables **Lifecycle Column** in the laptop table.
-  - **False:** Hides the column.
 
 ### **2. Configure SDK Key**
 
@@ -148,10 +165,17 @@ This app integrates **LaunchDarkly** for **dynamic feature flag toggles**.
   ```bash
   touch .env
   ```
-- Add your **LaunchDarkly client key**:
+- Add your **LaunchDarkly client key** as well as other helper environment variables:
+
   ```
+  ENVIRONMENT=testing
   LD_CLIENT_ID=your-launchdarkly-client-side-key
+
+  LD_API_KEY=personal-api-key
+  LD_PROJECT_KEY=default
   ```
+
+  The API key and project key are used to [export your flag configurations](#export-feature-flags) to the readme.
 
 ### **3. Restart Your Dev Server**
 
@@ -164,47 +188,11 @@ npm run dev
 - Open `http://localhost:3000`
 - Use the **toggle switch** under **Feature Triggers**.
 
----
+### **5. Export Feature Flags**
 
-## 🚀 Feature Flag Setup
-
-**This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.**
-
-### **release-laptop-life-remaining**
-
-**Type:** boolean
-
-**Description:** Displays laptop life remaining indicator in list and show views
-
-**Default Value:** `false`
-
----
-
-### **release-marketing-security-report**
-
-**Type:** boolean
-
-**Description:** No description provided.
-
-**Default Value:** `false`
-
----
-
-### **show-region-based-security-report**
-
-**Type:** multivariate
-
-**Description:** Long lived flag that dynamically shows the security report based on which security framework is relevant to a location
-
-**Default Value:** `false`
-
-#### 🔹 Variations:
-
-| Value   | Description |
-| ------- | ----------- |
-| `SOC 2` | Default     |
-| `GDPR`  | Europe      |
-| `CCPA`  | California  |
+```bash
+npm run update-flags
+```
 
 ---
 
@@ -233,7 +221,7 @@ ledgr-demo/
 
 ---
 
-## 🚀 Feature Flags Overview
+## 🚀 Feature Flag Setup
 
 **This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.**
 
