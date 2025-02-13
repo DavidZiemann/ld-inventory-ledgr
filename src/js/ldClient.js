@@ -3,57 +3,56 @@ import * as LDClient from "./ldclient.min.js";
 let ldClientInstance = null;
 
 /**
- * Initializes and returns the LaunchDarkly client.
- * Ensures a singleton instance is used across the application.
- *
- * @param {Object} [userContext] - Optional user context (default: anonymous).
- * @returns {LDClient} - The LaunchDarkly client instance.
+ * Initializes LaunchDarkly with user location context.
+ * @param {string} location - User location (e.g., "Europe", "California").
  */
-export function getLDClient(userContext = { kind: "user", anonymous: true }) {
+export function getLDClient(location = "default") {
   if (ldClientInstance) {
     return ldClientInstance;
   }
 
-  const LD_CLIENT_ID = process.env.LD_CLIENT_ID || "your-default-client-id";
+  const LD_CLIENT_ID =
+    process.env.LD_CLIENT_ID || "your-launchdarkly-client-side-key";
 
   if (!LD_CLIENT_ID) {
     console.warn(
-      "Warning: LaunchDarkly Client ID is missing. Feature flags will not work."
+      "⚠️ LaunchDarkly Client ID is missing. Feature flags may not work."
     );
     return null;
   }
 
-  const options = { streaming: true };
+  const context = {
+    kind: "user",
+    key: `user-${location}`,
+    location: location,
+  };
 
-  // Initialize the LD client with the provided user context
-  ldClientInstance = LDClient.initialize(LD_CLIENT_ID, userContext, options);
-
-  // Attach a one-time global 'ready' listener for debugging
-  ldClientInstance.on("ready", () => {
-    console.log("✅ LaunchDarkly client is ready");
+  ldClientInstance = LDClient.initialize(LD_CLIENT_ID, context, {
+    streaming: true,
   });
 
-  ldClientInstance.on("error", (err) => {
-    console.error("❌ LaunchDarkly encountered an error:", err);
+  ldClientInstance.on("ready", () => {
+    console.log("✅ LaunchDarkly client initialized with context:", context);
   });
 
   return ldClientInstance;
 }
 
 /**
- * Updates the user context dynamically.
- * Ensures the LD client is re-initialized with the new user.
- *
- * @param {Object} newUserContext - The new user details.
+ * Updates the LaunchDarkly context dynamically when the dropdown changes.
+ * @param {string} newLocation - New selected region.
  */
-export function updateLDUser(newUserContext) {
+export function updateLDContext(newLocation) {
+  console.log('updateLDContext: ' + newLocation);
   if (!ldClientInstance) {
-    console.warn(
-      "Attempted to update user before LaunchDarkly was initialized."
-    );
+    console.warn("⚠️ LaunchDarkly has not been initialized yet.");
     return;
   }
 
-  console.log("🔄 Updating LaunchDarkly user context:", newUserContext);
-  ldClientInstance.identify(newUserContext);
+  console.log(`🔄 Updating LD context to location: ${newLocation}`);
+  ldClientInstance.identify({
+    kind: "user",
+    key: `user-${newLocation}`,
+    location: newLocation,
+  });
 }

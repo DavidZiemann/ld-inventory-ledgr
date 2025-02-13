@@ -23,6 +23,14 @@
           <li>
             <a href="laptops.html" class="contrast">Laptop Management</a>
           </li>
+          <li>
+            <!-- Dropdown for Compliance Location -->
+            <select id="compliance-selector">
+              <option value="default">SOC 2 (Default)</option>
+              <option value="Europe">GDPR (Europe)</option>
+              <option value="California">CCPA (California)</option>
+            </select>
+          </li>
         </ul>
       </nav>
     </header>
@@ -37,7 +45,7 @@
           <strong>Ledgr</strong> for reliability, flexibility, and future-proof
           innovation.
         </p>
-        <a href="#comparison" role="button" class="contrast">Compare Now</a>
+        <a href="#comparison" role="button" class="contrast" id="comparison_btn">Compare Now</a>
       </div>
       <!-- Hero Image (Placeholder) -->
       <img
@@ -45,6 +53,22 @@
         alt="Hero placeholder"
         class="hero-image"
       />
+    </section>
+
+    <!-- Security Section (Hidden by Default) -->
+    <section
+      class="container-fluid benefits section-accent"
+      id="security-section"
+      style="display: none"
+    >
+      <div class="container">
+        <header>
+          <h2 id="security-title">Security & Compliance</h2>
+        </header>
+        <article id="security-content">
+          <p>Loading security compliance details...</p>
+        </article>
+      </div>
     </section>
 
     <!-- Key Benefits Section -->
@@ -188,5 +212,6 @@
     </footer>
 
     <script type="module" src="./js/ldClient.js"></script>
+    <script type="module" src="./js/securityMarketing.js"></script>
   </body>
 </html>

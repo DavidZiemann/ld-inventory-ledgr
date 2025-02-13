@@ -131,7 +131,8 @@ article > footer {
 
 .hero-image {
   flex: 1 1 300px;
-  max-width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   border-radius: 0.5rem;
 }
 
