@@ -2,7 +2,8 @@
 
 This simple demo application showcases the functionality available in LaunchDarkly through 2 scenarios:
 
-#### **Scenario 1 – Asset Management Tool** (`http://localhost:3000/laptops.html`)
+<details>
+<summary>#### **Scenario 1 – Asset Management Tool** (`http://localhost:3000/laptops.html`)</summary>
 
 A SaaS solution for managing laptops within an organization. The flag `release-laptop-life-remaining` is setup to add a column to the table. Additionally, a listener has been added to automatically update the page if a flag changes either from the LaunchDarkly GUI or triggers.
 
@@ -13,8 +14,9 @@ Relevant files:
 - [/src/js/toggles.js](/src/js/toggles.js) - Code for triggering API call to trigger flag change
 - [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
 - [/server/server.js](/server/server.js) - Express server to send triggers to LD & return back success/failure
-
-#### **Scenario 2 – Marketing Landing Page** (`http://localhost:3000/ledgr-vs-assetwise.html`)
+</details>
+<details>
+<summary>#### **Scenario 2 – Marketing Landing Page** (`http://localhost:3000/ledgr-vs-assetwise.html`)</summary>
 
 A modern SaaS-style comparison between Ledgr and a fictional competitor **AssetWise**.
 
@@ -26,11 +28,12 @@ Relevant files:
 
 - [/src/js/securityMarketing.js](/src/js/securityMarketing.js) - Usage of feature flags for the landing page
 - [/src/js/ldClient.js](/src/js/ldClient.js) - Instantiates the LD client
-
-#### **Helper Page** (`http://localhost:3000`)
+</details>
+<details>
+<summary>#### **Helper Page** (`http://localhost:3000`)</summary>
 
 This is an entry point for accessing the different parts of the demo as well as toggles for feature flags. I recommend starting here.
-
+</details>
 ---
 
 ## 🚀 Table of Contents
