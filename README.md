@@ -26,9 +26,9 @@ This project uses:
    - [macOS Instructions](#macos-instructions)
    - [Windows Instructions](#windows-instructions)
 3. [Running the Application Locally](#running-the-application-locally)
-4. [Feature Flags (LaunchDarkly)](#feature-flags-launchdarkly)
-5. [Project Structure](#project-structure)
-6. [Usage](#usage)
+4. [LaunchDarkly Setup](#launchdarkly-setup)
+5. [Feature Flag Setup](#feature-flag-setup)
+6. [Project Structure](#project-structure)
 
 ---
 
@@ -166,6 +166,48 @@ npm run dev
 
 ---
 
+## 🚀 Feature Flag Setup
+
+**This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.**
+
+### **release-laptop-life-remaining**
+
+**Type:** boolean
+
+**Description:** Displays laptop life remaining indicator in list and show views
+
+**Default Value:** `false`
+
+---
+
+### **release-marketing-security-report**
+
+**Type:** boolean
+
+**Description:** No description provided.
+
+**Default Value:** `false`
+
+---
+
+### **show-region-based-security-report**
+
+**Type:** multivariate
+
+**Description:** Long lived flag that dynamically shows the security report based on which security framework is relevant to a location
+
+**Default Value:** `false`
+
+#### 🔹 Variations:
+
+| Value   | Description |
+| ------- | ----------- |
+| `SOC 2` | Default     |
+| `GDPR`  | Europe      |
+| `CCPA`  | California  |
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -191,17 +233,44 @@ ledgr-demo/
 
 ---
 
-## 🎯 Usage
+## 🚀 Feature Flags Overview
 
-1. **Laptop Management (**\`\`**)**
+**This project uses LaunchDarkly for feature flag management. Below is an automatically generated list of active flags.**
 
-   - Displays a **laptop inventory table**.
-   - Feature flag: **Lifecycle column** is **enabled/disabled** dynamically.
+### **release-laptop-life-remaining**
 
-2. **Ledgr vs. AssetWise (**\`\`**)**
+**Type:** boolean
 
-   - Modern SaaS **comparison page**.
+**Description:** Displays laptop life remaining indicator in list and show views
 
-3. **Feature Flag Toggles (**\`\`**)**
+**Default Value:** `false`
 
-   - Toggle **"Laptop Lifecycle Column"** via LaunchDarkly.
+---
+
+### **release-marketing-security-report**
+
+**Type:** boolean
+
+**Description:** No description provided.
+
+**Default Value:** `false`
+
+---
+
+### **show-region-based-security-report**
+
+**Type:** multivariate
+
+**Description:** Long lived flag that dynamically shows the security report based on which security framework is relevant to a location
+
+**Default Value:** `false`
+
+#### 🔹 Variations:
+
+| Value   | Description |
+| ------- | ----------- |
+| `SOC 2` | Default     |
+| `GDPR`  | Europe      |
+| `CCPA`  | California  |
+
+---

@@ -5,9 +5,11 @@
   "scripts": {
     "parcel": "parcel serve src/index.html --port 3000",
     "server": "node server/server.js",
-    "dev": "npm-run-all --parallel parcel server"
+    "dev": "npm-run-all --parallel parcel server",
+    "update-flags": "node exportFlags.js"
   },
   "devDependencies": {
+    "dotenv": "^16.4.7",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.13.3"
   },
