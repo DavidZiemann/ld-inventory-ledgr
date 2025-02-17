@@ -1,4 +1,4 @@
-import * as LDClient from "./ldclient.min.js";
+import * as LDClient from "launchdarkly-js-client-sdk";
 
 let ldClientInstance = null;
 
@@ -20,15 +20,16 @@ function generateUserKey() {
 
 /**
  * Initializes LaunchDarkly with user location context.
- * @param {string} location - User location (e.g., "Europe", "California").
+ * Uses browser's Geolocation API if available.
+ * @param {string} fallbackLocation - Fallback location if geolocation fails.
  */
-export function getLDClient(location = "default") {
+export async function getLDClient(fallbackLocation = "default") {
   if (ldClientInstance) {
     return ldClientInstance;
   }
 
   const LD_CLIENT_ID =
-    process.env.LD_CLIENT_ID || "your-launchdarkly-client-side-key";
+    process.env.PARCEL_LD_CLIENT_ID || "your-launchdarkly-client-side-key";
 
   if (!LD_CLIENT_ID) {
     console.warn(
@@ -38,12 +39,57 @@ export function getLDClient(location = "default") {
   }
 
   const userKey = generateUserKey();
-
-  const context = {
+  let context = {
     kind: "user",
     key: userKey,
-    location: location,
+    location: fallbackLocation,
   };
+
+  // Try to get geolocation
+  if ("geolocation" in navigator) {
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          timeout: 5000,
+          maximumAge: 0
+        });
+      });
+
+      // Add precise location to context
+      context = {
+        ...context,
+        custom: {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        }
+      };
+
+      // Attempt to get country/city using reverse geocoding
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
+        );
+        const data = await response.json();
+        
+        if (data.address) {
+          context.country = data.address.country;
+          context.city = data.address.city || data.address.town || data.address.village;
+          context.location = data.address.country; // Update location with actual country
+          
+          // Include state for US locations
+          if (data.address.country === 'United States') {
+            context.state = data.address.state;
+            // Update location to include state for US
+            context.location = `US-${data.address.state}`;
+          }
+        }
+      } catch (error) {
+        console.warn('Reverse geocoding failed:', error);
+      }
+    } catch (error) {
+      console.warn('Geolocation error:', error);
+    }
+  }
 
   ldClientInstance = LDClient.initialize(LD_CLIENT_ID, context, {
     streaming: true,
