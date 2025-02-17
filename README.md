@@ -46,8 +46,6 @@ This is an entry point for accessing the different parts of the demo as well as 
 
 1. [System Requirements](#system-requirements)
 2. [Installation](#installation)
-   - [macOS Instructions](#macos-instructions)
-   - [Windows Instructions](#windows-instructions)
 3. [Running the Application Locally](#running-the-application-locally)
 4. [LaunchDarkly Setup](#launchdarkly-setup)
 5. [Project Structure](#project-structure)
@@ -57,8 +55,9 @@ This is an entry point for accessing the different parts of the demo as well as 
 
 ## ⚙️ System Requirements
 
-- **Node.js** (v18+ recommended)
-- **npm** (bundled with Node.js)
+- **Docker Desktop** (latest version)
+- **Visual Studio Code**
+- **VSCode Remote - Containers extension**
 
 ---
 
@@ -66,76 +65,34 @@ This is an entry point for accessing the different parts of the demo as well as 
 
 This project uses:
 
-- [**Parcel**](https://parceljs.org/) for fast local development.
-- [**Pico CSS**](https://picocss.com/) for styling.
-- [**LaunchDarkly**](https://launchdarkly.com) for feature flagging.
+- [**Parcel**](https://parceljs.org/) for fast local development
+- [**Pico CSS**](https://picocss.com/) for styling
+- [**LaunchDarkly**](https://launchdarkly.com) for feature flagging
+- **Docker** and **VSCode Devcontainers** for consistent development environments
 
-Follow the instructions below based on your OS.
+### **Setup Instructions**
 
-### **macOS Instructions**
+1. **Install Prerequisites**
+   - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+   - Install [Visual Studio Code](https://code.visualstudio.com/)
+   - Install the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VSCode extension
 
-1. **Install Homebrew (if not installed)**
-
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-
-2. **Install Node.js using Homebrew**
-
-   ```bash
-   brew install node
-   ```
-
-3. **Verify Installation**
-
-   ```bash
-   node -v
-   npm -v
-   ```
-
-4. **Clone the Repository**
-
+2. **Clone the Repository**
    ```bash
    git clone https://github.com/DavidZiemann/ld-inventory-ledgr.git
-   cd ld-inventory-ledgr
    ```
 
-5. **Install Dependencies**
+3. **Open in VSCode**
    ```bash
-   npm install
+   code ld-inventory-ledgr
    ```
 
----
-
-### **Windows Instructions**
-
-> [!NOTE]
-> I do not have a Windows machine. These steps have not been varified.
-
-1. **Install Node.js**
-
-   - Download and install [Node.js](https://nodejs.org/).
-   - Ensure `npm` is included in the installation.
-
-2. **Verify Installation**
-
-   ```powershell
-   node -v
-   npm -v
-   ```
-
-3. **Clone the Repository**
-
-   - Open **Command Prompt** or **PowerShell** and run:
-     ```powershell
-     git clone https://github.com/DavidZiemann/ld-inventory-ledgr.git
-     cd ld-inventory-ledgr
-     ```
-
-4. **Install Dependencies**
-   ```powershell
-   npm install
-   ```
+4. **Start Development Container**
+   - When prompted "Folder contains a Dev Container configuration file. Reopen folder to develop in a container", click "Reopen in Container"
+   - Or use the Command Palette (F1), type "Reopen in Container"
+   
+   > [!NOTE]
+   > The first time you open the container, it will take a few minutes to build. Subsequent opens will be much faster.
 
 ---
 
@@ -211,10 +168,8 @@ npm run update-flags
 
 If you want to set up a fresh LaunchDarkly project with all the required flags, segments, and targeting rules:
 
-1. **Install Python Dependencies**
-   ```bash
-   pip install requests python-dotenv
-   ```
+1. **Python Dependencies**
+   The development container comes with all required Python packages pre-installed.
 
 2. **Configure Environment**
    Ensure your `.env` file contains the LaunchDarkly API key:
