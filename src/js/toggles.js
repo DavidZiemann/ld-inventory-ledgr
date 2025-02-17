@@ -8,7 +8,7 @@ const toggleContainer = document.querySelector("#toggle-container");
  * Initializes feature flag toggles on page load.
  */
 document.addEventListener("DOMContentLoaded", async () => {
-  const ldClient = getLDClient();
+  const ldClient = await getLDClient();
 
   if (!ldClient) {
     console.error("LaunchDarkly client failed to initialize.");

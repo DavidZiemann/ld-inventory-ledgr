@@ -2,7 +2,7 @@ import { getLDClient, updateLDContext } from "./ldClient.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const selector = document.getElementById("compliance-selector");
-  const ldClient = getLDClient(selector.value);
+  const ldClient = await getLDClient(selector.value);
 
   function updateComplianceSection(complianceType) {
     const section = document.getElementById("security-section");

@@ -182,6 +182,10 @@ This app integrates **LaunchDarkly** for **dynamic feature flag toggles**.
 
   LD_API_KEY=personal-api-key
   LD_PROJECT_KEY=default
+
+  # LaunchDarkly Trigger URLs
+  LAPTOP_LIFE_TRIGGER_ON_URL=https://app.launchdarkly.com/webhook/triggers/67b2234d92f033099a7166ab/4cc64367-275e-4c16-ad44-e2e0fec2ce42
+  LAPTOP_LIFE_TRIGGER_OFF_URL=https://app.launchdarkly.com/webhook/triggers/67b2236592f033099a7167e2/87788a1f-d69f-40c8-b3d5-f3db1c175f7b
   ```
 
   The API key and project key are used to [export your flag configurations](#export-feature-flags) to the readme.
@@ -202,6 +206,39 @@ npm run dev
 ```bash
 npm run update-flags
 ```
+
+### **6. Initialize LaunchDarkly Project (Optional)**
+
+If you want to set up a fresh LaunchDarkly project with all the required flags, segments, and targeting rules:
+
+1. **Install Python Dependencies**
+   ```bash
+   pip install requests python-dotenv
+   ```
+
+2. **Configure Environment**
+   Ensure your `.env` file contains the LaunchDarkly API key:
+   ```
+   LD_API_KEY=your-launchdarkly-api-key  # Must be an admin-level API key
+   ```
+
+3. **Run the Setup Script**
+   ```bash
+   python ld_project_setup.py
+   ```
+
+   This script will:
+   - Create a new project named "Ledger"
+   - Set up the testing environment
+   - Create segments for EU countries and GDPR territorial scope
+   - Create feature flags:
+     - `release-laptop-life-remaining` (boolean)
+     - `release-marketing-security-report` (boolean)
+     - `show-region-based-security-report` (multivariate with targeting rules)
+   - Configure targeting rules for region-based content
+
+   > [!NOTE]
+   > Running this script will create a new project. If you want to use an existing project, you should manually configure the flags and segments in the LaunchDarkly dashboard.
 
 ---
 

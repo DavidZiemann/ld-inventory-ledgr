@@ -1,8 +1,6 @@
 // Import LaunchDarkly client
 import { getLDClient } from "./ldClient.js";
 
-const ldClient = getLDClient();
-
 // User context (for LD evaluation)
 const user = {
   name: "Jane Doe",
@@ -134,7 +132,8 @@ const laptopData = [
 ];
 
 // Initialize feature flags and UI
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const ldClient = await getLDClient();
   ldClient.on("ready", () => {
     let showLifecycleStatus = ldClient.variation(FLAG_LAPTOP_LIFE, false);
     console.log(`Flag ${FLAG_LAPTOP_LIFE} is:`, showLifecycleStatus);

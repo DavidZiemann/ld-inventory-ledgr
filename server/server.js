@@ -1,5 +1,11 @@
 /**
  * server.js
+ * 
+ * Load environment variables first
+ */
+require('dotenv').config();
+
+/**
  *
  * Primary Express server for toggling feature flags by calling specific on/off
  * endpoints. This file reads a "triggersConfig" object to determine which URL
